@@ -10,6 +10,13 @@ let package = Package(
         .library(
             name: "Checkout3DSPackages",
             targets: ["Checkout3DSPackages"]
+        ),
+        // Expose the prebuilt Checkout3DS binary as a linkable product so that
+        // SPM consumers (e.g. RyftUI) which reference its symbols directly get
+        // the xcframework into their final link closure.
+        .library(
+            name: "Checkout3DS",
+            targets: ["Checkout3DS"]
         )
     ],
     dependencies: [
