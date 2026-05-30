@@ -9,7 +9,12 @@ let package = Package(
     products: [
         .library(
             name: "Checkout3DSPackages",
-            targets: ["Checkout3DSPackages"] )
+            targets: ["Checkout3DSPackages"] ),
+        // Expose the binary Checkout3DS module as a product so consumers can depend
+        // on it directly (needed for module visibility through nested SPM graphs).
+        .library(
+            name: "Checkout3DS",
+            targets: ["Checkout3DS"] )
     ],
     dependencies: [
       .package( url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
